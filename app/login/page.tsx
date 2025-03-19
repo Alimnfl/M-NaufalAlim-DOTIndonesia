@@ -8,10 +8,12 @@ import Header from "./_section/Header";
 export default function LoginPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
 
+    setToken(token);
     if (token) {
       router.push("/");
     } else {
@@ -19,7 +21,7 @@ export default function LoginPage() {
     }
   }, [router]);
 
-  if (loading) {
+  if (loading && token) {
     return <Header loading={loading} />;
   }
 
