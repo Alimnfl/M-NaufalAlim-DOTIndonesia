@@ -68,10 +68,7 @@ export default function ModalSelectCountry({ mode }: { mode: string }) {
           )
         ) : null}
       </DialogTrigger>
-      <DialogContent
-        hideClose={true}
-        className="w-full flex flex-col gap-1 max-h-[620px] h-full max-w-[350px] md:max-w-3xl"
-      >
+      <DialogContent className="w-full flex flex-col gap-1 max-h-[620px] h-full max-w-[350px] md:max-w-3xl">
         <div className="bg-green-300 font-medium text-green-700 p-1 text-[10px] w-fit">
           Kota Domestik Alimnfl
         </div>

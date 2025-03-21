@@ -10,6 +10,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Building2 } from "lucide-react";
 import { useShippingCost } from "@/hooks/useShippingCost";
 import CardCity from "./CardCity";
+import International from "../_content/International";
 
 export default function ModalSelectCityDomestic({ mode }: { mode: string }) {
   const {
@@ -172,15 +173,15 @@ export default function ModalSelectCityDomestic({ mode }: { mode: string }) {
           )
         ) : null}
       </DialogTrigger>
-      <DialogContent
-        hideClose={true}
-        className="w-full flex flex-col gap-1 max-h-[620px] h-full max-w-[350px] md:max-w-3xl"
-      >
+      <DialogContent className="w-full flex flex-col gap-1 max-h-[620px] h-full max-w-[350px] md:max-w-3xl">
         <div className="bg-green-300 font-medium text-green-700 p-1 text-[10px] w-fit">
-          Kota Domestik Alimnfl
+          Kota {mode === "origin-domestic" ? "Domestik" : "Tujuan"}
+          Alimnfl
         </div>
         <div className="flex flex-col gap-2 w-full py-2 justify-between h-fit">
-          <DialogTitle className="font-semibold">Cek Kota Asal</DialogTitle>
+          <DialogTitle className="font-semibold">
+            Cek Kota {mode === "origin-domestic" ? "Domestik" : "Tujuan"}
+          </DialogTitle>
           <div className="flex flex-row w-full gap-2">
             <Input
               onChange={onChangeInput}
