@@ -1,5 +1,4 @@
 import { Input } from "@/components/ui/input";
-import { useShippingCost } from "@/hooks/useShippingCost";
 import React, { useEffect, useState } from "react";
 import ModalSelectCityDomestic from "../_component/ModalSelectCity";
 import { Button } from "@/components/ui/button";
@@ -7,8 +6,6 @@ import AlertAnnouncement from "@/components/ui/alert-announcement";
 import DomesticSkeleton from "./DomesticSkeleton";
 
 export default function Domestic() {
-  const { getDomesticDestination, setReqQuerySearch, reqQuerySearch } =
-    useShippingCost();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

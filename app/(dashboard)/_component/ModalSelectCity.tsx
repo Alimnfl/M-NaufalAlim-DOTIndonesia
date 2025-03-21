@@ -10,14 +10,12 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Building2 } from "lucide-react";
 import { useShippingCost } from "@/hooks/useShippingCost";
 import CardCity from "./CardCity";
-import axios from "axios";
 
 export default function ModalSelectCityDomestic({ mode }: { mode: string }) {
   const {
     setReqQuerySearch,
     reqQuerySearch,
     getDomesticDestination,
-    statusGetDomesticDestination,
     selectedCityOriginDomestic,
     selectedCityDestinationDomestic,
     GetDomesticDestination,
