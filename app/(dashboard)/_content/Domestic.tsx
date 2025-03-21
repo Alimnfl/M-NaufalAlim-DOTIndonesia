@@ -22,7 +22,7 @@ export default function Domestic() {
       <div className="bg-green-300 font-medium text-green-700 p-1 text-[10px] w-fit">
         Ongkir Domestik Alimnfl
       </div>
-      <h2 className="font-semibold text-xl">
+      <h2 className="font-semibold text-lg md:text-xl">
         Pengecekan Ongkos Kirim Domestik
       </h2>
       <AlertAnnouncement

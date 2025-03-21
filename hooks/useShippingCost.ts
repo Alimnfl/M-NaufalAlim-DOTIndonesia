@@ -46,6 +46,10 @@ type ShippingCostProps = {
     subdistrict_name: string;
     zip_code: string;
   };
+  selectedCountry: {
+    country_id: string;
+    country_name: string;
+  };
 
   // result data
   getDomesticDestination: object;
@@ -68,6 +72,7 @@ type ShippingCostProps = {
   setReqQueryTrack: (data: object) => void;
   setSelectedCityOriginDomestic: (data: object) => void;
   setSelectedCityDestinationDomestic: (data: object) => void;
+  setSelectedCountry: (data: object) => void;
 
   GetDomesticDestination: (
     data: ShippingCostProps["reqQuerySearch"]
@@ -126,6 +131,10 @@ const useShippingCost = create<ShippingCostProps>()(
         subdistrict_name: "",
         zip_code: "",
       },
+      selectedCountry: {
+        country_id: "",
+        country_name: "",
+      },
 
       //   result
       getDomesticDestination: {},
@@ -169,6 +178,14 @@ const useShippingCost = create<ShippingCostProps>()(
         set((state) => ({
           selectedCityDestinationDomestic: {
             ...state.selectedCityDestinationDomestic,
+            ...data,
+          },
+        })),
+
+      setSelectedCountry: (data) =>
+        set((state) => ({
+          selectedCountry: {
+            ...state.selectedCountry,
             ...data,
           },
         })),
@@ -272,6 +289,7 @@ const useShippingCost = create<ShippingCostProps>()(
         const {
           selectedCityOriginDomestic,
           selectedCityDestinationDomestic,
+          selectedCountry,
           ...persistedState
         } = state;
         return persistedState;

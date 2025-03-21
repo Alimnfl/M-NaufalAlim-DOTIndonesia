@@ -35,7 +35,7 @@ const DialogChoose = ({
   return (
     <Dialog open={visible} onOpenChange={onOpenChange}>
       <DialogContent
-        className="py-8 flex flex-col items-center justify-center md:px-0 md:max-w-xl rounded-xl max-w-[400px]"
+        className="py-8 flex flex-col items-center justify-center md:px-0 md:max-w-xl rounded-xl max-w-[300px] sm:max-w-[400px]"
         hideClose={true}
       >
         <div className="flex flex-col items-center mx-2 gap-2">
@@ -51,13 +51,13 @@ const DialogChoose = ({
         <div className="flex flex-row w-full justify-center gap-6">
           <Button
             variant="outline"
-            className="w-full text-green-600 cursor-pointer border-green-600 hover:bg-slate-100 hover:text-green-600 sm:w-auto"
+            className="w-auto text-green-600 cursor-pointer border-green-600 hover:bg-slate-100 hover:text-green-600 sm:w-auto"
             onClick={onPress1}
           >
             {titleButton1}
           </Button>
           <Button
-            className="w-full sm:w-auto cursor-pointer bg-green-500 text-white hover:bg-green-600"
+            className="w-auto cursor-pointer bg-green-500 text-white hover:bg-green-600"
             onClick={onPress2}
           >
             {titleButton2}

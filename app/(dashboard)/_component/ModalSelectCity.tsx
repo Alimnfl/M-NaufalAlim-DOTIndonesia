@@ -15,14 +15,11 @@ export default function ModalSelectCityDomestic({ mode }: { mode: string }) {
   const {
     setReqQuerySearch,
     reqQuerySearch,
-    getDomesticDestination,
     selectedCityOriginDomestic,
     selectedCityDestinationDomestic,
     GetDomesticDestination,
   } = useShippingCost();
   const [modalOpen, setModalOpen] = useState(false);
-
-  console.log(getDomesticDestination);
 
   const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -145,8 +142,8 @@ export default function ModalSelectCityDomestic({ mode }: { mode: string }) {
       <DialogTrigger>
         {mode === "origin-domestic" ? (
           selectedCityOriginDomestic?.id === 0 ? (
-            <div className="cursor-pointer font-medium w-full h-full rounded-xl flex flex-row gap-2 border border-gray-100  p-4">
-              <Building2 />
+            <div className="cursor-pointer text-sm items-center font-medium w-full h-full rounded-xl flex flex-row gap-5 border border-gray-100  p-4">
+              <Building2 size={22} />
               Pilih Kota
             </div>
           ) : (
@@ -159,8 +156,8 @@ export default function ModalSelectCityDomestic({ mode }: { mode: string }) {
           )
         ) : mode === "destination-domestic" ? (
           selectedCityDestinationDomestic?.id === 0 ? (
-            <div className="cursor-pointer font-medium w-full h-full rounded-xl flex flex-row gap-2 border border-gray-100  p-4">
-              <Building2 />
+            <div className="cursor-pointer text-sm items-center font-medium w-full h-full rounded-xl flex flex-row gap-5 border border-gray-100  p-4">
+              <Building2 size={22} />
               Pilih Kota
             </div>
           ) : (
@@ -177,7 +174,7 @@ export default function ModalSelectCityDomestic({ mode }: { mode: string }) {
       </DialogTrigger>
       <DialogContent
         hideClose={true}
-        className="w-full flex flex-col gap-1 max-h-[620px] h-full max-w-3xl"
+        className="w-full flex flex-col gap-1 max-h-[620px] h-full max-w-[350px] md:max-w-3xl"
       >
         <div className="bg-green-300 font-medium text-green-700 p-1 text-[10px] w-fit">
           Kota Domestik Alimnfl

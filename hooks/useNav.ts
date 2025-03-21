@@ -11,7 +11,7 @@ type NavProps = {
 const useNav = create<NavProps>()(
   persist(
     (set) => ({
-      selected: { nav: "" },
+      selected: { nav: "domestic" },
       setSelected: (data) =>
         set((state) => ({
           selected: { ...state.selected, ...data },
