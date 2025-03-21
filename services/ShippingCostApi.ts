@@ -5,11 +5,11 @@ export const getDomesticDestinationApi = async (
 ) => {
   try {
     const response = await axios.get(
-      `${process.env.NEXT_API_URL_RAJAONGKIR}/destination/domestic-destination?limit=${reqQuerySearch?.limit}&search=${reqQuerySearch?.search}&offset=${reqQuerySearch?.offset}`,
+      `${process.env.NEXT_PUBLIC_API_URL_RAJAONGKIR}/destination/domestic-destination?limit=${reqQuerySearch?.limit}&search=${reqQuerySearch?.search}&offset=${reqQuerySearch?.offset}`,
       {
         headers: {
           "Content-Type": "application/json",
-          api_key: process.env.NEXT_API_KEY_SHIPPING_COST,
+          api_key: process.env.NEXT_PUBLIC_API_KEY_SHIPPING_COST,
         },
       }
     );
@@ -27,11 +27,11 @@ export const getInternationalDestinationApi = async (
 ) => {
   try {
     const response = await axios.get(
-      `${process.env.NEXT_API_URL_RAJAONGKIR}/destination/interational-destination?limit=${reqQuerySearch?.limit}&search=${reqQuerySearch?.search}&offset=${reqQuerySearch?.offset}`,
+      `${process.env.NEXT_PUBLIC_API_URL_RAJAONGKIR}/destination/interational-destination?limit=${reqQuerySearch?.limit}&search=${reqQuerySearch?.search}&offset=${reqQuerySearch?.offset}`,
       {
         headers: {
           "Content-Type": "application/json",
-          api_key: process.env.NEXT_API_KEY_SHIPPING_COST,
+          api_key: process.env.NEXT_PUBLIC_API_KEY_SHIPPING_COST,
         },
       }
     );
@@ -49,12 +49,12 @@ export const postCalculateDomesticApi = async (
 ) => {
   try {
     const response = await axios.post(
-      `${process.env.NEXT_API_URL_RAJAONGKIR}/destination/domestic-cost`,
+      `${process.env.NEXT_PUBLIC_API_URL_RAJAONGKIR}/destination/domestic-cost`,
       reqQueryCalculate,
       {
         headers: {
           "Content-Type": "application/json",
-          api_key: process.env.NEXT_API_KEY_SHIPPING_COST,
+          api_key: process.env.NEXT_PUBLIC_API_KEY_SHIPPING_COST,
         },
       }
     );
@@ -72,12 +72,12 @@ export const postCalculateInternationalApi = async (
 ) => {
   try {
     const response = await axios.post(
-      `${process.env.NEXT_API_URL_RAJAONGKIR}/destination/international-cost`,
+      `${process.env.NEXT_PUBLIC_API_URL_RAJAONGKIR}/destination/international-cost`,
       reqQueryCalculate,
       {
         headers: {
           "Content-Type": "application/json",
-          api_key: process.env.NEXT_API_KEY_SHIPPING_COST,
+          api_key: process.env.NEXT_PUBLIC_API_KEY_SHIPPING_COST,
         },
       }
     );
@@ -95,12 +95,12 @@ export const postTrackingAirwaysBillApi = async (
 ) => {
   try {
     const response = await axios.post(
-      `${process.env.NEXT_API_URL_RAJAONGKIR}/track/waybill`,
+      `${process.env.NEXT_PUBLIC_API_URL_RAJAONGKIR}/track/waybill`,
       reqQueryTrack,
       {
         headers: {
           "Content-Type": "application/json",
-          api_key: process.env.NEXT_API_KEY_SHIPPING_COST,
+          api_key: process.env.NEXT_PUBLIC_API_KEY_SHIPPING_COST,
         },
       }
     );

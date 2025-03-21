@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormLogin from "./_section/FormLogin";
 import { useRouter } from "next/navigation";
 import Header from "./_section/Header";

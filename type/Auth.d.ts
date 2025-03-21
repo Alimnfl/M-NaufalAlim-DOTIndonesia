@@ -12,5 +12,5 @@ interface authProps {
 
   setReqQueryLogin: (data: Partial<credentialProps>) => void;
   login: (credentialProps: credentialProps, router: any) => Promise<void>;
-  logout: () => void;
+  logout: (router: any) => void;
 }

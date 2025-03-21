@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
+import ContentManage from "./_section/ContentManage";
 
 export default function Home() {
   const router = useRouter();
@@ -14,5 +15,9 @@ export default function Home() {
     }
   }, []);
 
-  return <React.Fragment>tst</React.Fragment>;
+  return (
+    <React.Fragment>
+      <ContentManage />
+    </React.Fragment>
+  );
 }

@@ -16,10 +16,7 @@ export default function FormLogin() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(
-      () => setLoading(false),
-      Math.random() * (400 - 200) + 200
-    );
+    const timer = setTimeout(() => setLoading(false), 400);
     return () => clearTimeout(timer);
   }, []);
 

@@ -7,27 +7,12 @@ import clsx from "clsx";
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   type: string;
-  classNamePrefixLabel?: string;
   prefixLabel?: string;
-  setValuePrefix?: (value: string) => void;
-  optionsPrefix?: string[];
   valuePrefix?: string;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      className,
-      type,
-      classNamePrefixLabel,
-      prefixLabel,
-      setValuePrefix,
-      optionsPrefix,
-      valuePrefix,
-      ...props
-    },
-    ref
-  ) => {
+  ({ className, type, prefixLabel, valuePrefix, ...props }, ref) => {
     const [showPassword, setShowPassword] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
 

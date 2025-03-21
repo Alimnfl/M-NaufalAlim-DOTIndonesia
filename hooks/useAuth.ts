@@ -33,6 +33,8 @@ const useAuthStore = create<authProps>((set) => ({
         status: "success",
       });
       localStorage.setItem("token", response.token);
+      const audio = new Audio("/sfx/correct.mp3");
+      audio.play();
       toast.success("Login berhasil!");
       if (response.status === 200) {
         router.push("/");
@@ -46,9 +48,13 @@ const useAuthStore = create<authProps>((set) => ({
     }
   },
 
-  logout: () => {
+  logout: (router) => {
     set({ user: null, token: null });
     localStorage.removeItem("token");
+    const { token } = useAuthStore.getState();
+    if (!token) {
+      router.push("/login");
+    }
   },
 }));
 

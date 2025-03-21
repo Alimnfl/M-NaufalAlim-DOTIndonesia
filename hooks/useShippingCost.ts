@@ -3,6 +3,7 @@ import {
   getInternationalDestinationApi,
   postCalculateDomesticApi,
   postCalculateInternationalApi,
+  postTrackingAirwaysBillApi,
 } from "@/services/ShippingCostApi";
 import toast from "react-hot-toast";
 import { create } from "zustand";
@@ -26,6 +27,26 @@ type ShippingCostProps = {
     courier: string;
   };
 
+  // change city
+  selectedCityOriginDomestic: {
+    id: number;
+    label: string;
+    province_name: string;
+    city_name: string;
+    district_name: string;
+    subdistrict_name: string;
+    zip_code: string;
+  };
+  selectedCityDestinationDomestic: {
+    id: number;
+    label: string;
+    province_name: string;
+    city_name: string;
+    district_name: string;
+    subdistrict_name: string;
+    zip_code: string;
+  };
+
   // result data
   getDomesticDestination: object;
   getInternationalDestination: object;
@@ -45,6 +66,24 @@ type ShippingCostProps = {
   setReqQuerySearch: (data: object) => void;
   setReqQueryCalculate: (data: object) => void;
   setReqQueryTrack: (data: object) => void;
+  setSelectedCityOriginDomestic: (data: object) => void;
+  setSelectedCityDestinationDomestic: (data: object) => void;
+
+  GetDomesticDestination: (
+    data: ShippingCostProps["reqQuerySearch"]
+  ) => Promise<void>;
+  GetInternationalDestination: (
+    data: ShippingCostProps["reqQuerySearch"]
+  ) => Promise<void>;
+  PostCalculateDomestic: (
+    data: ShippingCostProps["reqQueryCalculate"]
+  ) => Promise<void>;
+  PostCalculateInternational: (
+    data: ShippingCostProps["reqQueryCalculate"]
+  ) => Promise<void>;
+  PostTrackingAirwaysBill: (
+    data: ShippingCostProps["reqQueryTrack"]
+  ) => Promise<void>;
 };
 
 const useShippingCost = create<ShippingCostProps>()(
@@ -66,6 +105,26 @@ const useShippingCost = create<ShippingCostProps>()(
       reqQueryTrack: {
         awb: "",
         courier: "",
+      },
+
+      // selectedCity
+      selectedCityOriginDomestic: {
+        id: 0,
+        label: "",
+        province_name: "",
+        city_name: "",
+        district_name: "",
+        subdistrict_name: "",
+        zip_code: "",
+      },
+      selectedCityDestinationDomestic: {
+        id: 0,
+        label: "",
+        province_name: "",
+        city_name: "",
+        district_name: "",
+        subdistrict_name: "",
+        zip_code: "",
       },
 
       //   result
@@ -95,6 +154,23 @@ const useShippingCost = create<ShippingCostProps>()(
       setReqQueryTrack: (data) =>
         set((state) => ({
           reqQueryTrack: { ...state.reqQueryTrack, ...data },
+        })),
+
+      // selected city
+      setSelectedCityOriginDomestic: (data) =>
+        set((state) => ({
+          selectedCityOriginDomestic: {
+            ...state.selectedCityOriginDomestic,
+            ...data,
+          },
+        })),
+
+      setSelectedCityDestinationDomestic: (data) =>
+        set((state) => ({
+          selectedCityDestinationDomestic: {
+            ...state.selectedCityDestinationDomestic,
+            ...data,
+          },
         })),
 
       GetDomesticDestination: async (data: reqQuerySearchProps) => {
@@ -171,12 +247,12 @@ const useShippingCost = create<ShippingCostProps>()(
         }
       },
 
-      PostTrackingAirwaysBill: async (data: reqQuerySearchProps) => {
+      PostTrackingAirwaysBill: async (data: reqQueryTrackProps) => {
         const { postTrackingAirwayBill, hasSendRequest } = get();
         if (postTrackingAirwayBill && hasSendRequest) return;
         set({ statusPostTrackingAirwayBill: "loading" });
         try {
-          const response = await getDomesticDestinationApi(data);
+          const response = await postTrackingAirwaysBillApi(data);
           set({
             postTrackingAirwayBill: response,
             statusPostTrackingAirwayBill: "success",
@@ -192,6 +268,14 @@ const useShippingCost = create<ShippingCostProps>()(
 
     {
       name: "shipping-cost-storage",
+      partialize: (state) => {
+        const {
+          selectedCityOriginDomestic,
+          selectedCityDestinationDomestic,
+          ...persistedState
+        } = state;
+        return persistedState;
+      },
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.hasSendRequest = false;
